@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import HomeWorld from './HomeWorld';
-import Films from './Films'
 
 const CharacterContainer = styled.div `
-    width: 65%;
+    width: 20%;
     background: rgb(240, 255, 255, 0.5);
     font-size: 20px;
     padding: 20px 40px;
@@ -14,6 +13,10 @@ const CharacterContainer = styled.div `
 `
 
 const CharacterCard = (props) => {
+    const [films,setFilms] = useState([]);
+    useEffect(() => {
+        setFilms(props.films);
+    }, []);
     return (
         <CharacterContainer className = 'character-card'>
             <p>Name: {props.name}</p>
@@ -25,7 +28,6 @@ const CharacterCard = (props) => {
             <p>Birth Year: {props.birth_year}</p>
             <p>Gender: {props.gender}</p>
             <p>Home World: <HomeWorld homeworld={props.homeworld} /></p>
-            <p>Films: {props.films}</p>
         </CharacterContainer>
     )
 }

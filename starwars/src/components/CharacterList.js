@@ -3,6 +3,7 @@ import { ListGroup } from 'reactstrap';
 import axios from 'axios';
 import CharacterCard from './CharacterCard'
 import styled from 'styled-components';
+import SmallCard from './SmallCard';
 
 const Container = styled.div `
 height: 80vh;
@@ -16,7 +17,7 @@ const ListContainer = styled.div `
     font-size: 30px;
     color: black;
     text-align: left;
-    width: 30%;
+    width: 20%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -37,6 +38,14 @@ width: 50%;
 padding: 10px 20px;
 `
 
+const CardGrid = styled.div `
+width: 60%;
+display: flex;
+align-items: center;
+flex-flow: row wrap;
+justify-content: space-between;
+padding: 0 5%;
+`
 
 const CharacterList = () => {
     const [page, setPage] = useState(1);
@@ -82,8 +91,12 @@ const CharacterList = () => {
                     <PageButton className='page-link' onClick = {() => setPage(2)}>2</PageButton>
                 </div>
             </ListContainer>
-            <CharacterCard name={char.name} height={char.height} mass={char.mass} hair_color={char.hair_color} skin_color={char.skin_color} eye_color={char.eye_color} birth_year={char.birth_year} gender={char.gender} homeworld={char.homeworld} films={char.films} />
-            
+            <CharacterCard name={char.name} height={char.height} mass={char.mass} hair_color={char.hair_color} skin_color={char.skin_color} eye_color={char.eye_color} birth_year={char.birth_year} gender={char.gender} homeworld={char.homeworld} />
+            <CardGrid  className='character-grid'>
+                {charList.map(c => {
+                    return <SmallCard name={c.name} height={c.height} eye_color={c.eye_color} />
+                })}
+            </CardGrid> 
             
         </Container>
         

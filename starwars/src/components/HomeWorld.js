@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 const HomeWorld = (props) => {
-    const [homeworld, setHomeworld] = useState('loading');
+    const [homeworld, setHomeworld] = useState('');
     axios.get(props.homeworld)
     .then(response => {
         setHomeworld(response.data.name);
