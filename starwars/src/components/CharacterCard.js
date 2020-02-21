@@ -3,9 +3,19 @@ import styled from 'styled-components';
 import HomeWorld from './HomeWorld';
 import Films from './Films'
 
+const CharacterContainer = styled.div `
+    width: 65%;
+    background: rgb(240, 255, 255, 0.5);
+    font-size: 20px;
+    padding: 20px 40px;
+    border: 2px solid white;
+    text-align: left;
+
+`
+
 const CharacterCard = (props) => {
     return (
-        <div className = 'character-card'>
+        <CharacterContainer className = 'character-card'>
             <p>Name: {props.name}</p>
             <p>Height: {props.height}cm</p>
             <p>Weight: {props.mass}kg</p>
@@ -15,8 +25,8 @@ const CharacterCard = (props) => {
             <p>Birth Year: {props.birth_year}</p>
             <p>Gender: {props.gender}</p>
             <p>Home World: <HomeWorld homeworld={props.homeworld} /></p>
-            {/* <p>Films: <Films films={props.films} /> </p> */}
-        </div>
+            <p>Films: {props.films}</p>
+        </CharacterContainer>
     )
 }
 

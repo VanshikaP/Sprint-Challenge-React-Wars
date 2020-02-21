@@ -1,7 +1,42 @@
 import React, {useState, useEffect} from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup } from 'reactstrap';
 import axios from 'axios';
 import CharacterCard from './CharacterCard'
+import styled from 'styled-components';
+
+const Container = styled.div `
+height: 80vh;
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+`
+const ListContainer = styled.div `
+    background: rgb(240, 255, 255, 0.5);
+    font-size: 30px;
+    color: black;
+    text-align: left;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`
+const ListGroupItem = styled.li `
+    margin: 10px;
+    color: black;
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid white;
+    &:hover{
+        background-color: white;
+    }
+`
+const PageButton = styled.button `
+width: 50%;
+padding: 10px 20px;
+`
+
 
 const CharacterList = () => {
     const [page, setPage] = useState(1);
@@ -28,8 +63,8 @@ const CharacterList = () => {
     console.log('nameList is: ', nameList);
 
     return (
-        <div className = 'characters'>
-            <div className = 'list'>       
+        <Container className = 'characters'>
+            <ListContainer className = 'list'>       
                 <ListGroup>
                     <ListGroupItem onClick = {() => setChar(charList[0])}>{nameList[0]}</ListGroupItem>
                     <ListGroupItem onClick = {() => setChar(charList[1])}>{nameList[1]}</ListGroupItem>
@@ -42,13 +77,15 @@ const CharacterList = () => {
                     <ListGroupItem onClick = {() => setChar(charList[8])}>{nameList[8]}</ListGroupItem>
                     <ListGroupItem onClick = {() => setChar(charList[9])}>{nameList[9]}</ListGroupItem>
                 </ListGroup>
-            </div>
-            <CharacterCard name={char.name} height={char.height} mass={char.mass} hair_color={char.hair_color} skin_color={char.skin_color} eye_color={char.eye_color} birth_year={char.birth_year} gender={char.gender} homeworld={char.homeworld}  />
-            <div className = 'page-navigator'>
-                <button className='page-link' onClick = {() => setPage(1)}>1</button>
-                <button className='page-link' onClick = {() => setPage(2)}>2</button>
-            </div>
-        </div>
+                <div className = 'page-navigator'>
+                    <PageButton className='page-link' onClick = {() => setPage(1)}>1</PageButton>
+                    <PageButton className='page-link' onClick = {() => setPage(2)}>2</PageButton>
+                </div>
+            </ListContainer>
+            <CharacterCard name={char.name} height={char.height} mass={char.mass} hair_color={char.hair_color} skin_color={char.skin_color} eye_color={char.eye_color} birth_year={char.birth_year} gender={char.gender} homeworld={char.homeworld} films={char.films} />
+            
+            
+        </Container>
         
     )
 }

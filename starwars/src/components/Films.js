@@ -6,22 +6,23 @@ const Films = (props) => {
     let filmsText = 'loading'
     console.log('films ', props.films);
     let list = [];
-    if(props.films){
+    if(props.films!== undefined) {
+        console.log('fetching data')
         props.films.map(f => {
             axios.get(f)
             .then(response => {
-                console.log(response.data);
+                console.log('running fetch');
                 list.push(response.data.title);
+                return list;
             })
             .catch(error => {
                 console.log('error in fetching films', error);
             })
-            return list;
         })
+        console.log('data fetched');
+        console.log('list');
         setFilmsList(list);
-    }
-    
-    
+    } else {console.log('not fetching')}
     console.log(filmsList);
 
     filmsText = filmsList.reduce((a,b) => a.concat(b, ', '), '')
