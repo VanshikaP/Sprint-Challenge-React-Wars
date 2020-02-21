@@ -10,7 +10,7 @@ height: 80vh;
 width: 100%;
 display: flex;
 flex-direction: row;
-justify-content: space-around;
+justify-content: space-between;
 `
 const ListContainer = styled.div `
     background: rgb(240, 255, 255, 0.5);
@@ -39,12 +39,12 @@ padding: 10px 20px;
 `
 
 const CardGrid = styled.div `
-width: 60%;
+width: 50%;
 display: flex;
 align-items: center;
 flex-flow: row wrap;
 justify-content: space-between;
-padding: 0 5%;
+padding-right: 20px;
 `
 
 const CharacterList = () => {

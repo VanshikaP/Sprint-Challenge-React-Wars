@@ -9,7 +9,7 @@ const Card = styled.div `
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    box-shadow: 5px 10px 8px 10px white;
+    box-shadow: 5px 10px 8px 10px rgb(224,255,255, 0.5);
 `
 
 const SmallCard = (props) => {
